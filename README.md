@@ -1,6 +1,6 @@
 # Weather + APIs Demo
 
-Proyecto de practica con multiples APIs publicas sin key. Cualquier persona puede usarlo, aprender y modificarlo.
+Proyecto de practica con multiples APIs publicas. Cualquier persona puede usarlo y modificarlo.
 
 APIs usadas:
 - Open-Meteo Forecast: https://api.open-meteo.com/v1/forecast
@@ -22,7 +22,7 @@ APIs usadas:
 
 # Weather + APIs Demo
 
-Practice project with multiple public APIs without keys. Anyone can use it, learn from it, and modify it.
+Practice project with multiple public APIs without key. Anyone can use it and modify it.
 
 APIs used:
 - Open-Meteo Forecast: https://api.open-meteo.com/v1/forecast
