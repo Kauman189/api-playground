@@ -1,0 +1,277 @@
+/* =========================================
+   1. VARIABLES & SISTEMA DE DISEÑO MINIMALISTA (VERCEL-ISH)
+   ========================================= */
+:root {
+  --bg-canvas: #f5f5f2;
+  --bg-surface: #ffffff;
+  --border-color: #e6e2da;
+  --text-primary: #0b0b0b;
+  --text-secondary: #5c5c5c;
+  --btn-bg: #0b0b0b;
+  --btn-text: #ffffff;
+  --accent: #d9c7a8;
+  --font-sans: "Space Grotesk", "Avenir Next", "Segoe UI", sans-serif;
+}
+
+/* =========================================
+   2. BASE & RESET
+   ========================================= */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: var(--font-sans);
+  background-color: var(--bg-canvas);
+  color: var(--text-primary);
+  line-height: 1.5;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+  padding: 32px 20px;
+  max-width: 1100px;
+  margin: 0 auto;
+  align-items: start;
+  position: relative;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  opacity: 0.06;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='280' height='200'><rect width='100%25' height='100%25' fill='white'/><text x='0' y='24' font-family='Arial' font-size='14' fill='black'>API TEST BY KAUMAN189</text><text x='20' y='84' font-family='Arial' font-size='14' fill='black'>API TEST BY KAUMAN189</text><text x='40' y='144' font-family='Arial' font-size='14' fill='black'>API TEST BY KAUMAN189</text></svg>");
+  background-repeat: repeat;
+}
+
+/* =========================================
+   3. CONTENEDORES (SECCIONES) - CUADRADOS Y PLANOS
+   ========================================= */
+section {
+  width: 100%;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  /* Sin border-radius, sin box-shadow */
+  padding: 28px;
+  transition: transform 0.15s ease, border-color 0.15s ease;
+}
+
+section:hover {
+  transform: translateY(-2px);
+  border-color: #cfc7bb;
+}
+
+/* Eliminamos el HR feo */
+hr {
+  display: none;
+}
+
+/* =========================================
+   4. TIPOGRAFÍA
+   ========================================= */
+h1 {
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin: 0 0 10px 0;
+  color: var(--text-primary);
+}
+
+h2 {
+  font-size: 14px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-secondary);
+  margin: 24px 0 16px 0;
+}
+
+/* =========================================
+   5. INPUTS Y BOTONES - ESTILO PLANO
+   ========================================= */
+form {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+input {
+  flex: 1;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  /* Sin border-radius */
+  padding: 10px 12px;
+  font-size: 14px;
+  color: var(--text-primary);
+  outline: none;
+  transition: border-color 0.15s ease;
+}
+
+input:focus {
+  border-color: var(--text-primary);
+  box-shadow: 0 0 0 2px rgba(11, 11, 11, 0.08);
+}
+
+button {
+  background: var(--btn-bg);
+  color: var(--btn-text);
+  border: 1px solid var(--btn-bg); /* Borde sólido para estructura */
+  /* Sin border-radius */
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 500;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+button:hover {
+  background-color: #2a2a2a; /* Un gris muy oscuro al hover */
+  border-color: #2a2a2a;
+}
+
+/* =========================================
+   6. RESULTADOS - LIMPIOS Y CUADRADOS
+   ========================================= */
+
+/* #result (Clima) */
+#result {
+  /* Eliminar degradado y colores de fondo */
+  background: transparent;
+  color: var(--text-primary);
+  padding: 16px 0; /* Padding solo vertical */
+  border-top: 1px solid var(--border-color); /* Separador sutil */
+  margin-top: 14px;
+  font-size: 16px;
+}
+
+/* Asumimos que dentro del #result hay texto plano o párrafos */
+#result p, #result div {
+  margin: 4px 0;
+}
+
+/* #hpResult (Harry Potter) */
+#hpResult {
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border-color);
+}
+
+/* Estilo para las líneas de texto (Nombre, Casa, etc) */
+/* Asumiendo que cada dato es un <p> o texto suelto */
+#hpResult p, 
+#hpResult div { 
+  padding: 8px 0;
+  font-size: 14px;
+  color: var(--text-secondary);
+  margin: 0;
+  /* Usamos flex para alinear etiqueta y valor si están juntos */
+  display: flex;
+  justify-content: space-between;
+}
+
+/* El primer elemento (el nombre) destaca */
+#hpResult > *:first-child:not(img) {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 12px;
+  display: block;
+}
+
+/* =========================================
+   7. IMAGEN DEL PERSONAJE - CUADRADA
+   ========================================= */
+#hpResult img {
+  width: 100%;
+  max-width: 180px;
+  height: auto;
+  /* Sin border-radius */
+  display: block;
+  margin: 24px 0 0 0; /* Margen superior para separar del texto */
+  border: 1px solid var(--border-color); /* Borde fino opcional */
+}
+
+/* =========================================
+   8. GRAFICA DEL DIA - CLIMA
+   ========================================= */
+.weather-summary h3 {
+  margin: 0 0 6px 0;
+  font-size: 20px;
+}
+
+.weather-summary p {
+  margin: 0;
+  color: var(--text-secondary);
+}
+
+.chart-wrapper {
+  margin-top: 16px;
+  border: 1px solid var(--border-color);
+  padding: 12px;
+}
+
+.chart-title {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-secondary);
+  margin-bottom: 8px;
+}
+
+.weather-chart {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.chart-area {
+  fill: rgba(217, 199, 168, 0.35);
+}
+
+.chart-line {
+  fill: none;
+  stroke: #111111;
+  stroke-width: 2;
+}
+
+.chart-label {
+  font-size: 10px;
+  fill: var(--text-secondary);
+}
+
+.chart-range {
+  margin-top: 8px;
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+/* Ajuste móvil */
+@media (max-width: 480px) {
+  body { grid-template-columns: 1fr; padding: 24px 16px; }
+  section { padding: 24px; }
+  form { flex-direction: column; }
+  button { width: 100%; }
+}
+
+@media (min-width: 900px) {
+  body {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+    padding: 40px 24px;
+  }
+}
+
+a {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-color: var(--accent);
+  text-underline-offset: 3px;
+}
+
+#quoteResult p {
+  margin: 8px 0;
+}
